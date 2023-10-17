@@ -1,7 +1,5 @@
 import './App.css'
 import axios from 'axios'
-import { useParams } from "react-router-dom"
-import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react'
 
  function App() {
