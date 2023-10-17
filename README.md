@@ -1,8 +1,6 @@
-# React + Vite
+Api Rick And Morty
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+App de pesquisa dos personagens do Rick And Morty usando o Vite
 
-Currently, two official plugins are available:
+<img src="https://cdn.discordapp.com/attachments/760607702929637388/1163680121706782751/Opera_Instantaneo_2023-10-17_002811_deploy-api-nine.vercel.app.png?ex=65407491&is=652dff91&hm=cdd37383dd60590b8c8cf6f8965551feb40320c5b147d51c3118f3e5724479df&">
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
