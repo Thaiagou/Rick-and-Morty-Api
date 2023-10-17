@@ -1,15 +1,15 @@
 import './App.css'
 import axios from 'axios'
+import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react'
 
-const API = 'https://rickandmortyapi.com/api/character'
-
-export default function App() {
+ function App() {
 
   const [nome, setNome] = useState('')
-  const [personagem, setPersonagem] = useState(null)
+  const [personagem, setPersonagem] = useState()
   const [personagens, setPersonagens] = useState([])
-  const [personagensNovos, setPersonagensNovos] = useState([])
+  const [personagensNovos, setPersonagensNovos] = useState()
 
   const buscarPersonagemPorNome = () => {    
       var select = document.getElementById('status');
@@ -31,18 +31,18 @@ export default function App() {
   }
 
   useEffect(() => {
-    const fetchPersonagens = async () => {
-        const URL = API;
-        const response = await fetch(URL);
-        const data = await response.json();
-        setPersonagens(data.results)
-       
-    
-       
-    }
     buscarPersonagemPorNome();
-    fetchPersonagens();
 }, []);
+
+
+
+const getPersonagem = (url) =>{
+  axios.get(url).then(({ data }) => {
+    setPersonagem(data)
+  }, err => {
+    alert('Detalhes não encontrado')
+  })
+}
 
   return (
     <>
@@ -68,27 +68,33 @@ export default function App() {
   </select> 
   </div>
   </div>
-      
+      <div style={{display:'flex'}}>
       <div> {personagens.map((personagem) => (
-            <div>
-            <div className="personagem-card">
-
+            <div >
+            <div className="personagem-card" onClick={() => getPersonagem(personagem.url)}>
                 <img className="fotoPersonagem" src={personagem.image} />              
                 <h4>Nome: {personagem.name}</h4>
-                </div> 
+                </div>
+                
             </div>
         ))}</div>
-
+            <div className='detalhesPersonagem'>
+      <h2>Detalhes do Personagem</h2>
       {
         personagem &&
         <div>
-          <h4>{personagem.name}</h4>
-          <img className="fotoPersonagem" src={personagem.image} />              
+          <img className="fotoPersonagemDetalhe" src={personagem.image} />   
+          <div>           
                 <h4>Nome: {personagem.name}</h4>
+                <h4>Espécie: {personagem.species}</h4>
+                <h4>Status: {personagem.status}</h4>
+                </div>
         </div>
       }
-
+      </div>
+</div>
     </>
   )
 }
 
+export default App;
