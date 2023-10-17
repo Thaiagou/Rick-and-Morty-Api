@@ -5,17 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './pages/App'
 import './index.css'
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />
-  },
-  {
-    path: "/detalhes/:personagemId",
-    element: <Detalhes />
-  }
-])
-
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router}/>
+  <React.StrictMode>
+    <App/>
+  </React.StrictMode>
 )
